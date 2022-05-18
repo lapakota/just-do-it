@@ -1,0 +1,12 @@
+.header {
+  height: 6rem;
+  background-color: #e44332;
+
+  &__logo {
+    height: 100%;
+
+    &__image {
+      height: 100%;
+    }
+  }
+}

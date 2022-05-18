@@ -1,0 +1,15 @@
+.todo {
+  border: 1px solid gray;
+
+  &__text {
+
+  }
+
+  &__status {
+
+  }
+}
+
+.fulfilled {
+  text-decoration: line-through;
+}
