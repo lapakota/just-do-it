@@ -1,11 +1,18 @@
 .todoPage {
   flex-grow: 1;
 
+  &__header {
+    font-weight: 500;
+    color: #2cbe2c;
+  }
+
   &__todos {
     display: flex;
     flex-direction: column;
+    padding: 20px;
     margin: auto;
     width: 50%;
-
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
   }
 }

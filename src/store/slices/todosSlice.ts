@@ -13,17 +13,17 @@ export const todosSlice = createSlice({
     name: 'todos',
     reducers: {
         addTodo: (state, action: PayloadAction<{ text: string }>) => {
-            state.todos.push({ id: generateId(), status: TodoStatuses.Pending, text: action.payload.text });
+            state.todos.push({ id: generateId(), status: TodoStatuses.Active, text: action.payload.text });
         },
         deleteTodo: (state, action: PayloadAction<{ id: string }>) => {
             state.todos = state.todos.filter(x => x.id !== action.payload.id);
         },
-        fulfillTodo: (state, action: PayloadAction<{ id: string }>) => {
-            state.todos.filter(x => x.id === action.payload.id)[0].status = TodoStatuses.Fulfilled;
+        changeStatus: (state, action: PayloadAction<{ id: string; status: TodoStatuses }>) => {
+            state.todos.filter(x => x.id === action.payload.id)[0].status = action.payload.status;
         }
     }
 });
 
-export const { addTodo, deleteTodo, fulfillTodo } = todosSlice.actions;
+export const { addTodo, deleteTodo, changeStatus } = todosSlice.actions;
 
 export default todosSlice.reducer;

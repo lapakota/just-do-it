@@ -23,11 +23,12 @@ export const Todos: React.FC = () => {
                 <AddTodoForm closeModal={closeAddModal} />
             </Modal>
             <button onClick={openAddModal}>Создать</button>
-            <div className={styles.todoPage__todos}>
+            <section className={styles.todoPage__todos}>
+                <h2 className={styles.todoPage__header}>{todos.length > 0 ? 'Active tasks' : 'No tasks!'}</h2>
                 {todos.map(todo => (
-                    <TodoBlock key={todo.id} text={todo.text} status={todo.status} />
+                    <TodoBlock key={todo.id} id={todo.id} text={todo.text} status={todo.status} />
                 ))}
-            </div>
+            </section>
         </div>
     );
 };
