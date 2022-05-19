@@ -11,7 +11,7 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ closeModal }) => {
     const dispatch = useRootDispatch();
     const [todoText, setTodoText] = useState('');
 
-    const onSubmitAddingTodo = (event: React.FormEvent<HTMLFormElement>) => {
+    const submitAddingTodo = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (!todoText) return;
         dispatch(addTodo({ text: todoText }));
@@ -19,8 +19,13 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ closeModal }) => {
         closeModal();
     };
 
+    const cancelAdding = () => {
+        setTodoText('');
+        closeModal();
+    };
+
     return (
-        <form className={styles.addTodoForm} onSubmit={onSubmitAddingTodo}>
+        <form className={styles.addTodoForm} onSubmit={submitAddingTodo}>
             <h4 className={styles.addTodoForm__header}>Add task</h4>
             <input
                 className={styles.addTodoForm__input}
@@ -29,7 +34,7 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ closeModal }) => {
                 onChange={e => setTodoText(e.target.value)}
             />
             <div className={styles.addTodoForm__buttons}>
-                <button className={styles.addTodoForm__reject} onClick={closeModal}>
+                <button className={styles.addTodoForm__reject} onClick={cancelAdding} type={'button'}>
                     Отменить
                 </button>
                 <button className={styles.addTodoForm__submit} type={'submit'}>
