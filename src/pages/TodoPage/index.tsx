@@ -1,7 +1,7 @@
 import styles from './index.module.scss';
 import React, { useState } from 'react';
 import { useRootSelector } from '../../hooks/storeHooks';
-import { TodoBlock } from './Todo';
+import { TodoBlock } from './TodoBlock';
 import { Modal } from '../../shared/Modal';
 import { AddTodoForm } from './AddTodoForm';
 import { DeleteTodoForm } from './DeleteTodoForm';

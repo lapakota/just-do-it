@@ -8,6 +8,7 @@ import edit from '../../../assets/icons/edit.svg';
 import trash from '../../../assets/icons/trash.svg';
 import CurrentTodoIdContext from '../../../contexts/CurrentTodoIdContext';
 import { useToggle } from '../../../hooks/useToggle';
+import { CustomCheckbox } from '../../../shared/CustomCheckbox';
 
 type TodoBlockProps = {
     id: string;
@@ -34,12 +35,7 @@ export const TodoBlock: React.FC<TodoBlockProps> = ({ id, text, status, openDele
 
     return (
         <section className={styles.todo}>
-            <input
-                className={styles.todo__checkbox}
-                type={'checkbox'}
-                checked={checked}
-                onChange={() => handleCheckedUpdate()}
-            />
+            <CustomCheckbox checked={checked} toggle={handleCheckedUpdate} />
             <h3 className={cn(styles.todo__text, status === TodoStatuses.Fulfilled ? styles.fulfilled : '')}>{text}</h3>
             <ul className={styles.todo__buttons}>
                 <li>

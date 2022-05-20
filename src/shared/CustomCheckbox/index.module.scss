@@ -1,0 +1,30 @@
+.customCheckbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+
+  & + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  & + label::before {
+    width: 20px;
+    height: 20px;
+    content: '';
+    display: inline-block;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #6eb5c0;
+    border-radius: 0.25em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 80% 100%;
+  }
+
+  &:checked + label::before {
+    background-image: url('../../assets/icons/check.svg');
+  }
+}
