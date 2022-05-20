@@ -7,6 +7,7 @@ import { changeStatus } from '../../../store/slices/todosSlice';
 import edit from '../../../assets/icons/edit.svg';
 import trash from '../../../assets/icons/trash.svg';
 import CurrentTodoIdContext from '../../../contexts/CurrentTodoIdContext';
+import { useToggle } from '../../../hooks/useToggle';
 
 type TodoBlockProps = {
     id: string;
@@ -16,13 +17,13 @@ type TodoBlockProps = {
 };
 
 export const TodoBlock: React.FC<TodoBlockProps> = ({ id, text, status, openDeleteModal }) => {
-    const [checked, setChecked] = useState(false);
+    const [checked, toggleChecked] = useToggle(false);
     const dispatch = useRootDispatch();
     const currentIdContext = useContext(CurrentTodoIdContext);
 
-    const handleCheckedUpdate = (prev: boolean) => {
-        setChecked(!prev);
-        if (prev) dispatch(changeStatus({ id: id, status: TodoStatuses.Active }));
+    const handleCheckedUpdate = () => {
+        toggleChecked();
+        if (checked) dispatch(changeStatus({ id: id, status: TodoStatuses.Active }));
         else dispatch(changeStatus({ id: id, status: TodoStatuses.Fulfilled }));
     };
 
@@ -37,7 +38,7 @@ export const TodoBlock: React.FC<TodoBlockProps> = ({ id, text, status, openDele
                 className={styles.todo__checkbox}
                 type={'checkbox'}
                 checked={checked}
-                onChange={() => handleCheckedUpdate(checked)}
+                onChange={() => handleCheckedUpdate()}
             />
             <h3 className={cn(styles.todo__text, status === TodoStatuses.Fulfilled ? styles.fulfilled : '')}>{text}</h3>
             <ul className={styles.todo__buttons}>

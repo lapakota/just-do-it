@@ -13,6 +13,7 @@ export const Todos: React.FC = () => {
 
     const [showAddModal, openAddModal, closeAddModal] = useModal();
     const [showDeleteModal, openDeleteModal, closeDeleteModal] = useModal();
+
     const todos = useRootSelector(x => x.todo.todos);
 
     return (
