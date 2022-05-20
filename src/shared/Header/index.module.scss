@@ -1,6 +1,7 @@
 .header {
   height: 6rem;
-  background-color: #006c84;
+  background-color: #4ca0ad;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .2);
 
   &__logo {
     display: flex;
@@ -9,7 +10,7 @@
     width: fit-content;
     height: 100%;
     font-size: 30px;
-    color: #e2e8e4;
+    color: #fff;
     user-select: none;
   }
 }
