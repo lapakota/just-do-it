@@ -21,7 +21,7 @@ export const Todos: React.FC = () => {
         <CurrentTodoIdContext.Provider value={{ id: currentTodoId, setId: setCurrentTodoId }}>
             <div className={styles.todoPage}>
                 <Modal show={showAddModal} onClose={closeAddModal}>
-                    <AddTodoForm closeModal={closeAddModal} />
+                    <AddTodoForm showModal={showAddModal} closeModal={closeAddModal} />
                 </Modal>
                 <Modal show={showDeleteModal} onClose={closeDeleteModal}>
                     <DeleteTodoForm closeModal={closeDeleteModal} />

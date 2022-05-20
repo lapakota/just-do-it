@@ -4,10 +4,11 @@ import { addTodo } from '../../../store/slices/todosSlice';
 import { useRootDispatch } from '../../../hooks/storeHooks';
 
 type AddTodoFormProps = {
+    showModal: boolean;
     closeModal: () => void;
 };
 
-export const AddTodoForm: React.FC<AddTodoFormProps> = ({ closeModal }) => {
+export const AddTodoForm: React.FC<AddTodoFormProps> = ({ showModal, closeModal }) => {
     const dispatch = useRootDispatch();
     const [todoText, setTodoText] = useState('');
 
@@ -32,6 +33,7 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ closeModal }) => {
                 type={'text'}
                 value={todoText}
                 onChange={e => setTodoText(e.target.value)}
+                ref={input => input && showModal && input.focus()}
             />
             <div className={styles.addTodoForm__buttons}>
                 <button className={styles.addTodoForm__reject} onClick={cancelAdding} type={'button'}>
