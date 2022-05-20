@@ -29,7 +29,7 @@ export const Todos: React.FC = () => {
                 <div className={styles.todoPage__contentWrapper}>
                     <AddTodoButton onClick={openAddModal} />
                     <section className={styles.todoPage__todos}>
-                        <h2 className={styles.todoPage__header}>{todos.length > 0 ? 'Active tasks' : 'No tasks!'}</h2>
+                        <h2 className={styles.todoPage__header}>{todos.length > 0 ? 'Active tasks' : 'No tasks'}</h2>
                         {todos.map(todo => (
                             <TodoBlock
                                 key={todo.id}
