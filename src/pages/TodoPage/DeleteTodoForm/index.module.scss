@@ -1,0 +1,23 @@
+.deleteTodoForm {
+  min-width: 20vw;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__header {
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__reject {
+    width: fit-content;
+  }
+
+  &__submit {
+    width: fit-content;
+  }
+}
