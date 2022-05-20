@@ -7,6 +7,7 @@ import { AddTodoForm } from './AddTodoForm';
 import { DeleteTodoForm } from './DeleteTodoForm';
 import CurrentTodoIdContext from '../../contexts/CurrentTodoIdContext';
 import { useModal } from '../../hooks/useModal';
+import { AddTodoButton } from './AddTodoButton';
 
 export const Todos: React.FC = () => {
     const [currentTodoId, setCurrentTodoId] = useState('');
@@ -25,19 +26,21 @@ export const Todos: React.FC = () => {
                 <Modal show={showDeleteModal} onClose={closeDeleteModal}>
                     <DeleteTodoForm closeModal={closeDeleteModal} />
                 </Modal>
-                <button onClick={openAddModal}>Создать</button>
-                <section className={styles.todoPage__todos}>
-                    <h2 className={styles.todoPage__header}>{todos.length > 0 ? 'Active tasks' : 'No tasks!'}</h2>
-                    {todos.map(todo => (
-                        <TodoBlock
-                            key={todo.id}
-                            id={todo.id}
-                            text={todo.text}
-                            status={todo.status}
-                            openDeleteModal={openDeleteModal}
-                        />
-                    ))}
-                </section>
+                <div className={styles.todoPage__contentWrapper}>
+                    <AddTodoButton onClick={openAddModal} />
+                    <section className={styles.todoPage__todos}>
+                        <h2 className={styles.todoPage__header}>{todos.length > 0 ? 'Active tasks' : 'No tasks!'}</h2>
+                        {todos.map(todo => (
+                            <TodoBlock
+                                key={todo.id}
+                                id={todo.id}
+                                text={todo.text}
+                                status={todo.status}
+                                openDeleteModal={openDeleteModal}
+                            />
+                        ))}
+                    </section>
+                </div>
             </div>
         </CurrentTodoIdContext.Provider>
     );

@@ -1,0 +1,24 @@
+.addTodoButton {
+  all: unset;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 25px;
+  gap: 10px;
+
+  width: 100px;
+  height: 40px;
+
+  font-size: 18px;
+  color: #fff;
+  background-color: #6eb5c0;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #4ca0ad;
+  }
+}
