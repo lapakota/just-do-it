@@ -18,6 +18,8 @@
 
   cursor: pointer;
 
+  transition: background-color 0.2s ease-in-out;
+
   &:hover {
     background-color: #4ca0ad;
   }
