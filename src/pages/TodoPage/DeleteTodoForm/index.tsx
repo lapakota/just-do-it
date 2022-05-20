@@ -19,6 +19,7 @@ export const DeleteTodoForm: React.FC<DeleteTodoFormProps> = ({ closeModal }) =>
     };
 
     const cancelDeleting = () => {
+        currentIdContext.setId('');
         closeModal();
     };
 
