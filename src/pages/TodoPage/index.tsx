@@ -6,29 +6,14 @@ import { Modal } from '../../shared/Modal';
 import { AddTodoForm } from './AddTodoForm';
 import { DeleteTodoForm } from './DeleteTodoForm';
 import CurrentTodoIdContext from '../../contexts/CurrentTodoIdContext';
+import { useModal } from '../../hooks/useModal';
 
 export const Todos: React.FC = () => {
     const [currentTodoId, setCurrentTodoId] = useState('');
 
-    const [showAddModal, setShowAddModal] = useState(false);
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [showAddModal, openAddModal, closeAddModal] = useModal();
+    const [showDeleteModal, openDeleteModal, closeDeleteModal] = useModal();
     const todos = useRootSelector(x => x.todo.todos);
-
-    const openAddModal = () => {
-        setShowAddModal(true);
-    };
-
-    const closeAddModal = () => {
-        setShowAddModal(false);
-    };
-
-    const openDeleteModal = () => {
-        setShowDeleteModal(true);
-    };
-
-    const closeDeleteModal = () => {
-        setShowDeleteModal(false);
-    };
 
     return (
         <CurrentTodoIdContext.Provider value={{ id: currentTodoId, setId: setCurrentTodoId }}>
