@@ -1,5 +1,5 @@
 import styles from './index.module.scss';
-import React, { ReactElement } from 'react';
+import React from 'react';
 import cn from 'classnames';
 
 type CustomButtonProps = {
@@ -7,6 +7,8 @@ type CustomButtonProps = {
     onClick?: () => void;
     color?: ButtonColors;
     type?: 'button' | 'submit' | 'reset';
+    width?: string | number;
+    height?: string | number;
     children: any;
 };
 
@@ -21,6 +23,8 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
     onClick,
     color = ButtonColors.Green,
     type = 'button',
+    width = 'fit-content',
+    height = '40px',
     children
 }) => {
     const getColorClassName = (color: ButtonColors) => {
@@ -37,7 +41,12 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
     };
 
     return (
-        <button className={cn(styles.customButton, className, getColorClassName(color))} onClick={onClick} type={type}>
+        <button
+            className={cn(styles.customButton, className, getColorClassName(color))}
+            onClick={onClick}
+            type={type}
+            style={{ width: width, height: height }}
+        >
             {children}
         </button>
     );

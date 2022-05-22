@@ -43,13 +43,15 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ showModal, closeModal 
             </div>
             <div className={styles.addTodoForm__buttons}>
                 <CustomButton
-                    className={styles.addTodoForm__reject}
+                    className={styles.addTodoForm__buttons__cancel}
                     onClick={cancelAdding}
                     color={ButtonColors.DangerRed}
+                    width={'50%'}
+                    height={20}
                 >
                     Cancel
                 </CustomButton>
-                <CustomButton className={styles.addTodoForm__submit} type={'submit'}>
+                <CustomButton className={styles.addTodoForm__buttons__add} type={'submit'} width={'50%'} height={20}>
                     Add
                 </CustomButton>
             </div>

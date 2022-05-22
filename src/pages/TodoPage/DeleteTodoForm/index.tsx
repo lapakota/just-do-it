@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { deleteTodo } from '../../../store/slices/todosSlice';
 import { useRootDispatch } from '../../../hooks/storeHooks';
 import CurrentTodoIdContext from '../../../contexts/CurrentTodoIdContext';
+import { ButtonColors, CustomButton } from '../../../shared/CustomButton';
 
 type DeleteTodoFormProps = {
     closeModal: () => void;
@@ -25,14 +26,25 @@ export const DeleteTodoForm: React.FC<DeleteTodoFormProps> = ({ closeModal }) =>
 
     return (
         <form className={styles.deleteTodoForm} onSubmit={submitDeletingTodo}>
-            <h4 className={styles.deleteTodoForm__header}>Delete task?</h4>
+            <h3 className={styles.deleteTodoForm__header}>Delete task?</h3>
             <div className={styles.deleteTodoForm__buttons}>
-                <button className={styles.deleteTodoForm__reject} onClick={cancelDeleting} type={'button'}>
-                    Отменить
-                </button>
-                <button className={styles.deleteTodoForm__submit} type={'submit'}>
-                    Удалить
-                </button>
+                <CustomButton
+                    className={styles.deleteTodoForm__buttons__cancel}
+                    onClick={cancelDeleting}
+                    color={ButtonColors.DangerRed}
+                    width={'50%'}
+                    height={20}
+                >
+                    Cancel
+                </CustomButton>
+                <CustomButton
+                    className={styles.deleteTodoForm__buttons__delete}
+                    type={'submit'}
+                    width={'50%'}
+                    height={20}
+                >
+                    Delete
+                </CustomButton>
             </div>
         </form>
     );
