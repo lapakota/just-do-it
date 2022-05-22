@@ -9,6 +9,8 @@ type AddTodoFormProps = {
     closeModal: () => void;
 };
 
+const MAX_TODO_LENGTH = 300;
+
 export const AddTodoForm: React.FC<AddTodoFormProps> = ({ showModal, closeModal }) => {
     const dispatch = useRootDispatch();
     const [todoText, setTodoText] = useState('');
@@ -35,7 +37,7 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ showModal, closeModal 
                     type={'text'}
                     value={todoText}
                     placeholder={'Enter task name...'}
-                    onChange={e => setTodoText(e.target.value.slice(0, 300))}
+                    onChange={e => setTodoText(e.target.value.slice(0, MAX_TODO_LENGTH))}
                     ref={input => input && showModal && input.focus()}
                 />
             </div>
