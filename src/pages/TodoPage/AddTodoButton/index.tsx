@@ -1,6 +1,6 @@
-import styles from './index.module.scss';
 import React from 'react';
 import add from '../../../assets/icons/add.svg';
+import { ButtonColors, CustomButton } from '../../../shared/CustomButton';
 
 type AddTodoButtonProps = {
     onClick: () => void;
@@ -8,9 +8,11 @@ type AddTodoButtonProps = {
 
 export const AddTodoButton: React.FC<AddTodoButtonProps> = ({ onClick }) => {
     return (
-        <button className={styles.addTodoButton} onClick={onClick}>
-            <img src={add} alt={'add icon'} />
-            Add task
-        </button>
+        <CustomButton onClick={onClick} color={ButtonColors.Red}>
+            <>
+                <img src={add} alt={'add icon'} />
+                Add task
+            </>
+        </CustomButton>
     );
 };

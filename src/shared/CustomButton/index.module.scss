@@ -1,4 +1,4 @@
-.addTodoButton {
+.customButton {
   all: unset;
   display: flex;
   flex-direction: row;
@@ -6,21 +6,36 @@
   align-items: center;
   padding: 10px 25px;
   gap: 10px;
-
   width: fit-content;
   height: 40px;
-
   font-size: 18px;
   color: #fff;
-  background-color: #FF786D;
   border-radius: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, .2);
-
   cursor: pointer;
-
   transition: background-color 0.2s ease-in-out;
+}
+
+.red {
+  background-color: #FF786D;
 
   &:hover {
     background-color: #ff6054;
+  }
+}
+
+.dangerRed {
+  background-color: red;
+
+  &:hover {
+    background-color: #bb0202;
+  }
+}
+
+.green {
+  background-color: #2cbe2c;
+
+  &:hover {
+    background-color: #0d930d;
   }
 }
