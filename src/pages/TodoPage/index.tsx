@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useRootSelector } from '../../hooks/storeHooks';
 import { TodoBlock } from './TodoBlock';
 import { Modal } from '../../shared/Modal';
-import { AddTodoForm } from './AddTodoForm';
+import { TodoForm, TodoFormTypes } from './TodoForm';
 import { DeleteTodoForm } from './DeleteTodoForm';
 import CurrentTodoIdContext from '../../contexts/CurrentTodoIdContext';
 import { useModal } from '../../hooks/useModal';
@@ -14,6 +14,7 @@ export const Todos: React.FC = () => {
 
     const [showAddModal, openAddModal, closeAddModal] = useModal();
     const [showDeleteModal, openDeleteModal, closeDeleteModal] = useModal();
+    const [showUpdateModal, openUpdateModal, closeUpdateModal] = useModal();
 
     const todos = useRootSelector(x => x.todo.todos);
 
@@ -21,7 +22,10 @@ export const Todos: React.FC = () => {
         <CurrentTodoIdContext.Provider value={{ id: currentTodoId, setId: setCurrentTodoId }}>
             <div className={styles.todoPage}>
                 <Modal show={showAddModal} onClose={closeAddModal}>
-                    <AddTodoForm showModal={showAddModal} closeModal={closeAddModal} />
+                    <TodoForm showModal={showAddModal} closeModal={closeAddModal} formType={TodoFormTypes.Add} />
+                </Modal>
+                <Modal show={showUpdateModal} onClose={closeUpdateModal}>
+                    <TodoForm showModal={showAddModal} closeModal={closeUpdateModal} formType={TodoFormTypes.Update} />
                 </Modal>
                 <Modal show={showDeleteModal} onClose={closeDeleteModal}>
                     <DeleteTodoForm closeModal={closeDeleteModal} />
@@ -36,6 +40,7 @@ export const Todos: React.FC = () => {
                                 id={todo.id}
                                 text={todo.text}
                                 status={todo.status}
+                                openUpdateModal={openUpdateModal}
                                 openDeleteModal={openDeleteModal}
                             />
                         ))}
