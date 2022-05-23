@@ -19,6 +19,14 @@
   pointer-events: visible;
 }
 
+.modal-close {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .modal-content {
   width: fit-content;
   padding: 30px;

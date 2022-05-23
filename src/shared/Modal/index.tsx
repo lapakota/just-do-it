@@ -23,10 +23,9 @@ export const Modal: React.FC<ModalProps> = ({ onClose, show, children }) => {
     }, [onClose]);
 
     return (
-        <div className={cn('modal', show ? 'show' : '')} onClick={onClose}>
-            <div className="modal-content" onClick={e => e.stopPropagation()}>
-                {children}
-            </div>
+        <div className={cn('modal', show ? 'show' : '')}>
+            <div className="modal-close" onClick={onClose} />
+            <div className="modal-content">{children}</div>
         </div>
     );
 };
